@@ -1,0 +1,17 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'src/css/output.css' %}" />
+    <title>
+      {% block title %}
+        Todo
+      {% endblock %}
+    </title>
+  </head>
+  <body class="font-sans">
+    {% block content %}
+      {% comment %}The main content will come here{% endcomment %}
+    {% endblock %}
+  </body>
+</html>
