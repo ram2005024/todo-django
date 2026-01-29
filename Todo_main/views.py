@@ -3,7 +3,7 @@ from django.shortcuts import render
 from todo.models import Tasks
 # Home
 def home(request):
-   completed_tasks=Tasks.objects.filter(is_completed=True)
+   completed_tasks=Tasks.objects.filter(is_completed=True).order_by('-updated_at')
    incomplete_tasks=Tasks.objects.filter(is_completed=False).order_by('-created_at')
    context={
       'comp_task':completed_tasks,

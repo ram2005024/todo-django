@@ -15,20 +15,21 @@
           <div class="py-3 px-2 border border-gray-200 rounded-lg flex max-sm:flex-col sm:justify-between">
             <span class="text-sm text-gray-600">{{ task.task }}</span>
             <div class="flex gap-1.5">
-              <button class="px-2 py-1.5 rounded-mg cursor-pointer inline-flex items-center rounded-lg transition-all transform bg-green-500 text-white text-sm font-semibold ease-in hover:bg-green-600 active:scale-95"><i class="fa-solid fa-check"></i><span class="ml-2">Mark as done</span></button>
-              <button class="px-2 py-1.5 rounded-mg cursor-pointer inline-flex items-center rounded-lg transition-all transform ease-in bg-red-500 text-white text-sm font-semibold active:scale-95 hover:bg-red-700"><i class="fa-solid fa-trash"></i></button>
-              <button class="px-2 py-1.5 rounded-mg cursor-pointer inline-flex items-center rounded-lg transition-all transform ease-in bg-indigo-500 text-white text-sm font-semibold active:scale-95 hover:bg-indigo-600"><i class="fa-solid fa-pen"></i></button>
+              <a href="{% url 'mark_task_done' task.id %}" class="px-2 py-1.5 rounded-mg cursor-pointer inline-flex items-center rounded-lg transition-all transform bg-green-500 text-white text-sm font-semibold ease-in hover:bg-green-600 active:scale-95"><i class="fa-solid fa-check"></i><span class="ml-2">Mark as done</span></a>
+              <a href="{% url 'delete_task' task.id %}" class="px-2 py-1.5 rounded-mg cursor-pointer inline-flex items-center rounded-lg transition-all transform ease-in bg-red-500 text-white text-sm font-semibold active:scale-95 hover:bg-red-700"><i class="fa-solid fa-trash"></i></a>
+              <a href="{% url 'edit_task' task.id %}" class="px-2 py-1.5 rounded-mg cursor-pointer inline-flex items-center rounded-lg transition-all transform ease-in bg-indigo-500 text-white text-sm font-semibold active:scale-95 hover:bg-indigo-600"><i class="fa-solid fa-pen"></i></a>
             </div>
           </div>
         {% endfor %}
       </div>
       {% comment %}Right section{% endcomment %}
-      <div class="flex-1 flex flex-col gap-4">
+      <div class="flex-1 flex flex-col gap-4 overflow-x-hidden overflow-y-scroll h-96">
         <h2 class="text-gray-600">Completed Task</h2>
         {% for task in comp_task %}
           <div class="flex flex-col w-full gap-2">
-            <div class="border border-gray-200 rounded-lg p-2 w-full">
+            <div class="border border-gray-200 rounded-lg p-2 w-full flex justify-between">
               <p class="text-sm text-gray-500">{{ task.task }}</p>
+              <a href="{% url 'mark_task_undone' task.id %}" class="px-2 py-1.5 rounded-mg cursor-pointer inline-flex items-center rounded-lg transition-all transform ease-in bg-red-500 text-white text-sm font-semibold active:scale-95 hover:bg-red-700">Undo</a>
             </div>
           </div>
         {% endfor %}
